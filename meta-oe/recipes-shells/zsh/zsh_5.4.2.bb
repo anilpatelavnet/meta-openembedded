@@ -26,7 +26,6 @@ EXTRA_OECONF = " \
     --enable-cap \
     --enable-multibyte \
     --disable-gdbm \
-    --disable-dynamic \
     zsh_cv_shared_environ=yes \
 "
 
@@ -35,10 +34,10 @@ export bindir="${base_bindir}"
 
 EXTRA_OEMAKE = "-e MAKEFLAGS="
 
-ALTERNATIVE_${PN} = "sh"
-ALTERNATIVE_LINK_NAME[sh] = "${base_bindir}/sh"
-ALTERNATIVE_TARGET[sh] = "${base_bindir}/${BPN}"
-ALTERNATIVE_PRIORITY = "100"
+#ALTERNATIVE_${PN} = "sh"
+#ALTERNATIVE_LINK_NAME[sh] = "${base_bindir}/sh"
+#ALTERNATIVE_TARGET[sh] = "${base_bindir}/${BPN}"
+#ALTERNATIVE_PRIORITY = "100"
 
 export AUTOHEADER = "true"
 
@@ -48,8 +47,7 @@ do_configure () {
 }
 
 do_install_append () {
-    rm -fr ${D}/usr/share
-    rmdir --ignore-fail-on-non-empty ${D}/usr
+    :
 }
 
 pkg_postinst_${PN} () {
