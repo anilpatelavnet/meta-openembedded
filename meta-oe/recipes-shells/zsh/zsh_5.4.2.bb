@@ -50,12 +50,6 @@ do_install_append () {
     :
 }
 
-pkg_postinst_${PN} () {
-    touch $D${sysconfdir}/shells
-    grep -q "bin/zsh" $D${sysconfdir}/shells || echo /bin/zsh >> $D${sysconfdir}/shells
-    grep -q "bin/sh" $D${sysconfdir}/shells || echo /bin/sh >> $D${sysconfdir}/shells
-}
-
 FILES_${PN}-dbg += "\
     ${libdir}/${PN}/${PV}/${PN}/.debug/*.so \
     ${libdir}/${PN}/${PV}/${PN}/db/.debug/*.so \
